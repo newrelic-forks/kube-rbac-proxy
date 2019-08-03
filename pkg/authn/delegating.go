@@ -37,6 +37,7 @@ func NewDelegatingAuthenticator(client authenticationclient.TokenReviewInterface
 		CacheTTL:                2 * time.Minute,
 		ClientCAFile:            authn.X509.ClientCAFile,
 		TokenAccessReviewClient: client,
+		APIAudiences:            authenticator.Audiences(authn.Token.Audiences),
 	}
 
 	authenticator, _, err := authenticatorConfig.New()
